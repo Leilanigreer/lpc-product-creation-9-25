@@ -1,0 +1,2 @@
+class LeatherColor < ApplicationRecord
+end

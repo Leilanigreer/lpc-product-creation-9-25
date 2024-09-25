@@ -1,4 +1,5 @@
 require 'json'
+require 'csv'
 
 def extract_id_split(gid)
   gid.split('/').last
@@ -13,40 +14,49 @@ client = ShopifyAPI::Clients::Graphql::Admin.new(
   session: session
 )
 
-collection_query = <<~QUERY
-  query {
-    collections(first: 20) {
-      edges {
-        node {
-          id
-          title
-          handle
-          updatedAt
-          sortOrder
-        }
-      }
-    }
-  }
-QUERY
+# collection_query = <<~QUERY
+#   query {
+#     collections(first: 20) {
+#       edges {
+#         node {
+#           id
+#           title
+#           handle
+#           updatedAt
+#           sortOrder
+#         }
+#       }
+#     }
+#   }
+# QUERY
 
-collections = client.query(
-  query: collection_query,
-)
-# p collections
+# collections = client.query(
+#   query: collection_query,
+# )
+# # p collections
 
-collections_data = collections.body['data']['collections']['edges']
+# collections_data = collections.body['data']['collections']['edges']
 
-# Iterate through the collections and extract id and title
-collections_data.each do |collection|
-  graphql_id = collection['node']['id']
-  shopify_id = extract_id_split(graphql_id)
-  title = collection['node']['title']
-  handle = collection['node']['handle']
-  puts "ID: #{graphql_id}, Shopify ID: #{shopify_id} Title: #{title}"
-  add_collection = ShopifyCollection.create(
-    graphql_id: graphql_id,
-    shopify_id: shopify_id,
-    title: title,
-    handle: handle,
-  )
-end
+# # Iterate through the collections and extract id and title
+# collections_data.each do |collection|
+#   graphql_id = collection['node']['id']
+#   shopify_id = extract_id_split(graphql_id)
+#   title = collection['node']['title']
+#   handle = collection['node']['handle']
+#   puts "ID: #{graphql_id}, Shopify ID: #{shopify_id} Title: #{title}"
+#   add_collection = ShopifyCollection.create(
+#     graphql_id: graphql_id,
+#     shopify_id: shopify_id,
+#     title: title,
+#     handle: handle,
+#   )
+# end
+
+
+# CSV.foreach('/Users/leilanigreer/Downloads/Database schema - LeatherColorNoHeader.csv') do |row|
+#   color = row[1]
+#   p color
+#   abbreviation = row[2]
+#   p abbreviation
+#   LeatherColor.create(name: color, abbreviation: abbreviation)
+# end

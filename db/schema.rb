@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_25_192537) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_25_201732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "leather_colors", force: :cascade do |t|
+    t.string "name"
+    t.string "abbreviation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "shopify_collections", force: :cascade do |t|
     t.string "graphql_id"
