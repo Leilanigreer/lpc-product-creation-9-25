@@ -1,0 +1,2 @@
+class ShopifyCollection < ApplicationRecord
+end

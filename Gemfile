@@ -57,3 +57,5 @@ group :test do
 end
 
 gem "shopify_api", "~> 14.5"
+
+gem "dotenv", groups: [ :development, :test ]

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  graphql_id: MyString
+  shopify_id: 1
+  title: MyString
+  handle: MyString
+
+two:
+  graphql_id: MyString
+  shopify_id: 1
+  title: MyString
+  handle: MyString
