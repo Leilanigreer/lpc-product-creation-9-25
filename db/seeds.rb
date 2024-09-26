@@ -37,7 +37,6 @@ client = ShopifyAPI::Clients::Graphql::Admin.new(
 
 # collections_data = collections.body['data']['collections']['edges']
 
-# # Iterate through the collections and extract id and title
 # collections_data.each do |collection|
 #   graphql_id = collection['node']['id']
 #   shopify_id = extract_id_split(graphql_id)
@@ -52,11 +51,16 @@ client = ShopifyAPI::Clients::Graphql::Admin.new(
 #   )
 # end
 
+file = File.join(Rails.root, "db", "LeatherColorNoHeader.csv")
+CSV.foreach(file) do |row|
+  color = row[0]
+  p color
+  abbreviation = row[1]
+  p abbreviation
+  # LeatherColor.create(name: color, abbreviation: abbreviation)
+end
 
-# CSV.foreach('/Users/leilanigreer/Downloads/Database schema - LeatherColorNoHeader.csv') do |row|
-#   color = row[1]
-#   p color
-#   abbreviation = row[2]
-#   p abbreviation
-#   LeatherColor.create(name: color, abbreviation: abbreviation)
-# end
+file = File.join(Rails.root, "db", "Style.csv")
+CSV.foreach(file) do |row|
+p row
+end
