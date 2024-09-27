@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   get "/leathercolors" => "leather_colors#index"
-  post "/leather_colors" => "leather_colors#create"
+  post "/leathercolors" => "leather_colors#create"
 end
