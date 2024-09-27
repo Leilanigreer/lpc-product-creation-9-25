@@ -54,10 +54,10 @@ client = ShopifyAPI::Clients::Graphql::Admin.new(
 file = File.join(Rails.root, "db", "LeatherColorNoHeader.csv")
 CSV.foreach(file) do |row|
   color = row[0]
-  p color
+  # p color
   abbreviation = row[1]
-  p abbreviation
-  # LeatherColor.create(name: color, abbreviation: abbreviation)
+  # p abbreviation
+  LeatherColor.create(name: color, abbreviation: abbreviation)
 end
 
 file = File.join(Rails.root, "db", "Style.csv")
