@@ -4,15 +4,19 @@ class LeatherColorsController < ApplicationController
   end
 
   def create
-    @leather_color = LeatherColor.new(
-      name: params[:name],
-      abbreviation: params[:abbreviation],
-    )
+    @leather_color = LeatherColor.new(leather_color_params)
 
     if @leather_color.save
-      render :show
+      render json: @leather_color, status: :created
     else
+      Rails.logger.error("LeatherColor errors: #{@leather_color.errors.full_messages}")
       render json: { errors: @leather_color.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def leather_color_params
+    params.require(:leather_color).permit(:color, :image_url)
   end
 end
