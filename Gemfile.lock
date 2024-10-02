@@ -264,7 +264,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    shopify_api (14.5.0)
+    shopify_api (14.6.0)
       activesupport
       concurrent-ruby
       hash_diff
@@ -275,7 +275,7 @@ GEM
       securerandom
       sorbet-runtime
       zeitwerk (~> 2.5)
-    sorbet-runtime (0.5.11581)
+    sorbet-runtime (0.5.11589)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -331,7 +331,7 @@ DEPENDENCIES
   rails (~> 7.2.1)
   rubocop-rails-omakase
   selenium-webdriver
-  shopify_api (~> 14.5)
+  shopify_api (~> 14.6)
   sprockets-rails
   stimulus-rails
   turbo-rails

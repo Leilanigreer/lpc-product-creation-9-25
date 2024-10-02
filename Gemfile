@@ -56,7 +56,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "shopify_api", "~> 14.5"
+gem "shopify_api", "~> 14.6"
 
 gem "dotenv", groups: [ :development, :test ]
 
