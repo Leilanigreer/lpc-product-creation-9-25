@@ -14,42 +14,42 @@ client = ShopifyAPI::Clients::Graphql::Admin.new(
   session: session
 )
 
-# collection_query = <<~QUERY
-#   query {
-#     collections(first: 20) {
-#       edges {
-#         node {
-#           id
-#           title
-#           handle
-#           updatedAt
-#           sortOrder
-#         }
-#       }
-#     }
-#   }
-# QUERY
+collection_query = <<~QUERY
+  query {
+    collections(first: 20) {
+      edges {
+        node {
+          id
+          title
+          handle
+          updatedAt
+          sortOrder
+        }
+      }
+    }
+  }
+QUERY
 
-# collections = client.query(
-#   query: collection_query,
-# )
-# # p collections
+collections = client.query(
+  query: collection_query,
+)
+# p collections
 
-# collections_data = collections.body['data']['collections']['edges']
+collections_data = collections.body['data']['collections']['edges']
 
-# collections_data.each do |collection|
-#   graphql_id = collection['node']['id']
-#   shopify_id = extract_id_split(graphql_id)
-#   title = collection['node']['title']
-#   handle = collection['node']['handle']
-#   puts "ID: #{graphql_id}, Shopify ID: #{shopify_id} Title: #{title}"
-#   add_collection = ShopifyCollection.create(
-#     graphql_id: graphql_id,
-#     shopify_id: shopify_id,
-#     title: title,
-#     handle: handle,
-#   )
-# end
+collections_data.each do |collection|
+  graphql_id = collection['node']['id']
+  shopify_id = extract_id_split(graphql_id)
+  title = collection['node']['title']
+  handle = collection['node']['handle']
+  puts "ID: #{graphql_id}, Shopify ID: #{shopify_id} Title: #{title}"
+  add_collection = ShopifyCollection.create(
+    graphql_id: graphql_id,
+    shopify_id: shopify_id,
+    title: title,
+    handle: handle,
+  )
+end
 
 file = File.join(Rails.root, "db", "LeatherColorNoHeader.csv")
 CSV.foreach(file) do |row|
